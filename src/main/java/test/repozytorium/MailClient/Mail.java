@@ -17,8 +17,8 @@ public class Mail {
 	public void sendMail(Msg message) {
 		
     Properties props = new Properties();
-    props.put("mail.smtp.host", "poczta.o2.pl");
-    props.put("mail.smtp.port", "587");
+    props.put("mail.smtp.host", data.getSmtp());
+    props.put("mail.smtp.port", data.getPort());
     Session session = Session.getInstance(props, null);
 
 

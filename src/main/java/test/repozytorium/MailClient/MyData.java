@@ -62,5 +62,11 @@ public class MyData implements Serializable {
 	public String getMyPass() {
 		return myPass;
 	}
+	public String getPort() {
+		return port;
+	}
+	public String getSmtp() {
+		return smtp;
+	}
 	
 }
