@@ -64,6 +64,7 @@ public class App
 	    		men = true;
 	    	}
     	}while(men);
+    	profile.vievUser();
        	Mail mail = new Mail(profile);
        	mail.sendMail(new Msg().writeMail());
     }

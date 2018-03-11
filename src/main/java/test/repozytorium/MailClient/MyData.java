@@ -22,8 +22,8 @@ public class MyData implements Serializable {
 
 	}
 	public void loadProfile(String user) throws FileNotFoundException, IOException{
-			this.user = user;
 			props.load(new FileInputStream(user+"_config.txt"));
+			this.user = user;
 			myMail = props.getProperty("mail_adress");
 			myPass = props.getProperty("password");
 	}
@@ -48,9 +48,9 @@ public class MyData implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	public void vievProps() {
-		System.out.println(myMail);
-		System.out.println(myPass);
+	public void vievUser() {
+		System.out.println("Zalogowany uzytkownik: " +user);
+		System.out.println("Moj adres: "+myMail);
 	}
 	
 	public MyData getData() {
