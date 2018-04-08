@@ -15,7 +15,7 @@ public class receivedMessages {
 	private MyData profile;
 	private SimpleStringProperty title;
 	private SimpleStringProperty date;
-//	private SimpleStringProperty from;
+	private SimpleStringProperty from;
 	private SimpleStringProperty to;
 	private Object textOfMessage;
 	
@@ -39,10 +39,10 @@ public class receivedMessages {
                 
                 
      
-            //    Address[] from = mes.getFrom();
+                Address[] from = mes.getFrom();
                 Address[] to = mes.getAllRecipients();
                 this.to = new SimpleStringProperty(to[0].toString());
-           //     this.from = new SimpleStringProperty(from[0].toString());
+                this.from = new SimpleStringProperty(from[0].toString());
                 this.date = new SimpleStringProperty(new Date(mes.getSentDate().getTime()).toGMTString());
                 this.title = new SimpleStringProperty(mes.getSubject());
 
@@ -51,9 +51,9 @@ public class receivedMessages {
         	
         }
 	}
-//	public String getFrom() {
-//		return from.get();
-//	}
+	public String getFrom() {
+		return from.get();
+	}
 	
 	public String getDate() {
 		return date.get();

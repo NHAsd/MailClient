@@ -70,7 +70,7 @@ public class MailBox extends Application {
             
             TableColumn from = new TableColumn("From");
             from.setPrefWidth(100);
-     //       from.setCellValueFactory(new PropertyValueFactory<receivedMessages, String>("From"));
+            from.setCellValueFactory(new PropertyValueFactory<receivedMessages, String>("From"));
             
             TableColumn date = new TableColumn("Date");
             date.setPrefWidth(100);
@@ -124,7 +124,7 @@ public class MailBox extends Application {
             
             for(int i = 0;i<cb.getValue();i++) {
             	dateList.add(new receivedMessages(existProfile, i));
-        //    	fromList.add(new receivedMessages(existProfile, i));
+            	fromList.add(new receivedMessages(existProfile, i));
             	titleList.add(new receivedMessages(existProfile, i));
             } 
 
