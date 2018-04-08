@@ -26,14 +26,12 @@ public class MyData implements Serializable {
 			this.user = user;
 			myMail = props.getProperty("mail_adress");
 			myPass = props.getProperty("password");
-	}
+			this.user = user;
+			port = props.getProperty("port");
+			smtp = props.getProperty("smtp_host");
+	} 
 	@SuppressWarnings("deprecation")
 	public void createProfile(String user, String myMail, String myPass, String smtp, String port) {
-		this.user = user;
-		this.myMail = myMail;
-		this.myPass = myPass;
-		this.smtp = smtp;
-		this.port = port;
 		props.setProperty("mail_adress", myMail);
 		props.setProperty("password", myPass);
 		props.setProperty("smtp_host", smtp);

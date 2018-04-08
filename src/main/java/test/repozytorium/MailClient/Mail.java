@@ -1,5 +1,8 @@
 package test.repozytorium.MailClient;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Collection;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -9,30 +12,29 @@ import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
 
 public class Mail {
-	MyData data;
-	public Mail(MyData myData) {
-		data = myData.getData();
+	private MyData existProfile;
+
+	public Mail(String user) throws FileNotFoundException, IOException {
+		existProfile = new MyData();
+		existProfile.loadProfile(user);
 	}
 	
-	public void sendMail(Msg message) {
+	public void sendMail(String text, String title, String reciver) throws MessagingException {
 		
     Properties props = new Properties();
-    props.put("mail.smtp.host", data.getSmtp());
-    props.put("mail.smtp.port", data.getPort());
+    props.put("mail.smtp.host", existProfile.getSmtp());
+    props.put("mail.smtp.port", existProfile.getPort());
     Session session = Session.getInstance(props, null);
+    
 
 
-    try {
         MimeMessage msg = new MimeMessage(session);
-        msg.setFrom(data.getMyMail());
-        msg.setRecipients(Message.RecipientType.TO, message.reciver);
-        msg.setSubject(message.getTitle());
+        msg.setFrom(existProfile.getMyMail());
+        msg.setRecipients(Message.RecipientType.TO, reciver);
+        msg.setSubject(title);
 //        msg.setSentDate(new Date(0));
-        msg.setText(message.getMessage());
-        Transport.send(msg, data.getMyMail(), data.getMyPass());
-        System.out.println("mail sended");
-    } catch (MessagingException mex) {
-        System.out.println("send failed, exception: " + mex);
-    }
+        msg.setText(text);
+        Transport.send(msg, existProfile.getMyMail(), existProfile.getMyPass());
+
 	}
 }
